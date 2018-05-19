@@ -13,13 +13,21 @@ class DatabaseManager:
     def __init__(self, direction):
         self.df = None
         self.direction = direction
-        self.columns_names = ['id','bug','descripción','problema técnico','solución','ruta imagen','incidentes','archivos modificados','horas']
+        self.columns_names = ['id',
+                              'bug',
+                              'descripcion',
+                              'problema técnico',
+                              'solucion',
+                              'ruta imagen',
+                              'incidentes',
+                              'archivos modificados',
+                              'horas']
 
         # self.connect(self.direction)
 
     def connect(self, direction):
         try:
-            self.df = pd.read_csv(direction, names = self.columns_name)
+            self.df = pd.read_csv(direction, names=self.columns_names)
 
         except IOError:
             print("Could not read file: ", direction)
@@ -35,14 +43,7 @@ class DatabaseManager:
               modify_files,
               list_hours):
 
-        information = [str(id_number),
-                       str(number),
-                       description,
-                       technical_problem,
-                       solution,
-                       image_path,
-                       incident,
-                       modify_files,
-                       str(list_hours)]
-        self.df = pd.DataFrame(data=information, columns = self.columns_names)
-        self.df.to_csv(self.direction, index=False, header=False)
+        information = [[str(id_number), str(number), description, technical_problem, solution, image_path, incident, modify_files, str(list_hours)]]
+        self.df = pd.DataFrame(data=information, columns=self.columns_names)
+        print(self.df)
+        self.df.to_csv(self.direction, index=False, header=True)

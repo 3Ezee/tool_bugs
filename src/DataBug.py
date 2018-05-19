@@ -15,7 +15,7 @@ class DataBug:
         self._technical_problem = ""
         self._solution = ""
         self._image_path = ""
-        self._incident = 0
+        self._incident = ""
         self._modify_files = ""
         self._list_hours = 0
         self._tests = ""
@@ -129,7 +129,8 @@ class DataBug:
                 self._technical_problem + "," +
                 self._solution + "," +
                 self._image_path + "," +
-                str(self._incident) + "," +
+                self._incident + "," +
                 self._modify_files + "," +
                 str(self._list_hours) + "," +
-                self._tests) + "\n"
+                self._tests)
+
