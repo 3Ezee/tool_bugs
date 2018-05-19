@@ -13,18 +13,29 @@ class DataBug:
         self._number = 0
         self._description = ""
         self._technical_problem = ""
+        self._solution = ""
         self._image_path = ""
         self._incident = 0
         self._modify_files = ""
         self._list_hours = 0
         self._tests = ""
 
-    def update(self, id_number, number, description, technical_problem, image_path, incident, modify_files, list_hours,
+    def update(self,
+               id_number,
+               number,
+               description,
+               technical_problem,
+               solution,
+               image_path,
+               incident,
+               modify_files,
+               list_hours,
                tests):
         self._id_number = id_number
         self._number = number
         self._description = description
         self._technical_problem = technical_problem
+        self._solution = solution
         self._image_path = image_path
         self._incident = incident
         self._modify_files = modify_files
@@ -62,6 +73,14 @@ class DataBug:
     @technical_problem.setter
     def technical_problem(self, value):
         self._technical_problem = value
+
+    @property
+    def solution(self):
+        return self._solution
+
+    @solution.setter
+    def solution(self, value):
+        self._solution = value
 
     @property
     def image_path(self):
@@ -104,8 +123,13 @@ class DataBug:
         self._tests = value
 
     def __str__(self):
-        return (str(self._id_number) + "," + str(self._number) + "," +
-                self._description + "," + self._technical_problem + "," +
-                self._image_path + "," + str(self._incident) + "," +
-                self._modify_files + "," + str(self._list_hours) + "," +
-                self._tests)
+        return (str(self._id_number) + "," +
+                str(self._number) + "," +
+                self._description + "," +
+                self._technical_problem + "," +
+                self._solution + "," +
+                self._image_path + "," +
+                str(self._incident) + "," +
+                self._modify_files + "," +
+                str(self._list_hours) + "," +
+                self._tests) + "\n"
